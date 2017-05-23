@@ -3,6 +3,7 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import store from './store';
 
 Vue.config.productionTip = false
 Vue.directive('myCss', {
@@ -22,10 +23,12 @@ Vue.directive('myCss', {
     console.log(el, binding);
   }
 })
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
   router, //router:router的简写
+  store,
   template: '<App/>',
   components: { App }
 })

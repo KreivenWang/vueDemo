@@ -4,7 +4,7 @@
   
     <h4 v-my-css="{'color':'red','font-weight':'bold'}">Customize Directive Test~</h4>
     <input type="text" v-my-focus>
-
+  
     <!--mode 进出顺序 in-out out-in-->
     <transition name="fade" mode="out-in">
       <!--<keep-alive>-->
@@ -43,16 +43,21 @@
       </transition>
     </div>
   
+    <div class="demo-border">
+      <apple></apple>
+      <p>vuex for price calc:</p> {{totalPrice}}
+    </div>
   </div>
 </template>
 
 <script>
 import comA from './components/a';
 import comB from './components/b';
+import Apple from './components/Apple';
 export default {
   name: 'app',
   components: {
-    comA, comB
+    comA, comB,Apple
   },
   data() {
     return {
@@ -92,6 +97,11 @@ export default {
       inserted(el, binding) {
         el.focus();
       }
+    }
+  },
+  computed: { //计算属性
+    totalPrice() {
+      return this.$store.getters.getTotal;
     }
   }
 }
